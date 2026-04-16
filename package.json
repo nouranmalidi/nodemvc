@@ -1,0 +1,26 @@
+{
+  "name": "nodemvs",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/nouranmalidi/nodemvc#readme",
+  "bugs": {
+    "url": "https://github.com/nouranmalidi/nodemvc/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nouranmalidi/nodemvc.git"
+  },
+  "license": "ISC",
+  "author": "Nouran",
+  "type": "commonjs",
+  "main": "myserver.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ejs": "^5.0.2",
+    "express": "^5.2.1",
+    "express-myconnection": "^1.0.4",
+    "mysql2": "^3.22.0"
+  }
+}
