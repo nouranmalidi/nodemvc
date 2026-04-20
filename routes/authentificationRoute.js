@@ -19,4 +19,6 @@ const authentificationController = require("../controllers/authentificationContr
 router.get("/register", authentificationController.registerView); // Je trace la route de la page d'authentification en utilisant la méthode get du routeur
 
 
+router.post("/register", authentificationController.registerUser); // Je trace la route de la page d'authentification en utilisant la méthode post du routeur pour pouvoir envoyer les données du formulaire d'inscription à la base de données MySQL
+
 module.exports = router; // J'exporte le routeur pour pouvoir l'utiliser dans le fichier app.js

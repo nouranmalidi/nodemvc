@@ -7,5 +7,11 @@ module.exports = {
     // la vue register 
     registerView: (req, res) => {
         res.render('register');
+    },
+
+    registerUser: async (req, res) => {
+        console.log("### Contoller registerUser ###");
+        console.log("### Contoller - req body :", req.body);  
     }
 };
+
