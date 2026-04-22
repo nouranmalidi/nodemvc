@@ -1,0 +1,35 @@
+.navbar {
+  background-color: #333;
+  padding: 10px;
+  width: 100%; 
+  
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin-right: 10px;
+  font-size: 18px;
+  color: white;
+}
+
+
+/*Lorsque je survole un lien */
+.navbar a:hover {
+  color: #ddd;
+}   
+
+/*Pour le lien actif */
+.navbar .active {
+  color: #4CAF50;
+}
+
+
+/* Je rends responsive la bar de navigation.
+Il pourra s'adapter aux écrans plus petits */
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none; /*Supprime le flottement pour les petits écrans */
+    display: block; /**Affiche les liens en bloc pour les petits écrans */ 
+  }
+}

@@ -10,12 +10,41 @@ const express = require("express");
 const app = express(); // J'instancie une application de type express
 
 
+
 // J'importe MySQL2 pour pouvoir se connecter à la base de données MySQL
 const mysql2 = require("mysql2");
 
 
 // J'importe le pilote express-myconnexion utilisé pour se connecter à la BDD
 const myConnection = require('express-myconnection');
+
+
+// 1. Importation de la connexion
+const sequelize = require('./db'); 
+
+// 2. IMPORTATION CRUCIALE : Si tu n'importes pas le modèle, Sequelize l'ignore !
+const User = require('./models/User'); 
+
+// 3. La fonction de démarrage
+async function assertDatabaseConnection() {
+  try {
+    // On teste la connexion
+    await sequelize.authenticate();
+    console.log('✅ Connexion à MySQL réussie !');
+
+    // ON LANCE LA CRÉATION DES TABLES
+    // force: false -> crée la table seulement si elle n'existe pas
+    // alter: true  -> met à jour la table si tu as ajouté des colonnes
+    await sequelize.sync({ alter: true });
+    console.log('✅ La table "Users" est maintenant prête dans MySQL.');
+
+  } catch (error) {
+    console.error('❌ Impossible de se connecter ou de créer les tables :', error);
+  }
+}
+
+assertDatabaseConnection(); // On lance la fonction de démarrage pour se connecter à la BDD et créer les tables si nécessaire
+
 
 
 // Pour lire le JSON (si tu envoies du JSON via Postman ou un Fetch)

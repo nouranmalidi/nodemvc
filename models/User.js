@@ -6,24 +6,36 @@
  * Le modèle User est de : id, email et password  
  */
 
-const DataTypes = require('sequelize'); // J'importe les types de données de Sequelize pour définir les types des champs de la table
+const {DataTypes}  = require('sequelize'); // J'importe les types de données de Sequelize pour définir les types des champs de la table
 
 
 const sequelize = require('../db'); // J'importe l'instance de Sequelize pour pouvoir définir le modèle User en utilisant cette instance 
 
-module.exports = sequelize.define('User', { // Je définis le modèle User en utilisant la méthode define de Sequelize
-  id: {
-    type: DataTypes.INTEGER, // Le champ "id" est de type entier
-    primaryKey: true, // Le champ "id" est une clé primaire
-    autoIncrement: true // Le champ "id" est auto-incrémenté
-  },
-  email: {
-    type: DataTypes.STRING, // Le champ "email" est de type chaîne de caractères
-    unique: true, // Le champ "email" doit être unique
-    allowNull: false // Le champ "email" ne peut pas être null
-  },
-  password: {
-    type: DataTypes.STRING, // Le champ "password" est de type chaîne de caractères
-    allowNull: false // Le champ "password" ne peut pas être null
-  }
-});
+// models/User.js
+
+module.exports = (sequelize, DataTypes) => {
+  // On définit le modèle à l'intérieur de cette fonction
+  const User = sequelize.define('User', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    email: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: false
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
+  }, {
+    // Options optionnelles (ex: nom de la table)
+    tableName: 'users'
+  });
+
+  return User; // TRÈS IMPORTANT : On retourne le modèle
+};
+
+
